@@ -1,0 +1,40 @@
+<ng-container *transloco="let t">
+    <!-- Header -->
+    <div>
+        <app-header></app-header>
+    </div>
+    <!-- Section 1 -->
+    <div class="px-5 sm:px-10 md:px-20 xl:px-48 mt-20">
+        <!-- Table title -->
+        <div class="text-8xl font-medium text-center">
+            {{t('principal.tableTitle1')}} <label class="text-primary cursor-text">{{t('principal.tableTitle2')}}</label>  {{t('principal.tableTitle3')}}
+        </div>
+        <!-- Table -->
+        <div class="mt-5">
+            <app-table [data]="tableData" [translate]="true"></app-table>
+        </div>
+    </div>
+    <!-- Section 2 -->
+    <div class="px-5 xl:px-72">
+        <!-- Section title -->
+        <div class="text-6xl font-medium text-center">
+            {{t('principal.titleSection2')}}
+        </div>
+        <!-- Menu -->
+        <div class="mt-5 mx-5 xl:mx-20">
+            <app-menu [items]="menuCategories" [itemSelected]="menuSelected" (itemChange)="categorySelected($event)"></app-menu>
+        </div>
+    </div>
+    <!-- Section 3 -->
+    <div class="px-5 sm:px-10 md:px-32 mb-20">
+        <app-brand [items]="principalService.brands$ | async" [showAllCoupons]="showAllCoupons"></app-brand>
+    </div>
+    <!-- Section 4 -->
+    <div>
+        <app-detail [items]="principalService.brands$ | async"></app-detail>
+    </div>
+    <!-- Footer -->
+    <div class="bg-slate-100 p-2">
+        <app-footer></app-footer>
+    </div>
+</ng-container>

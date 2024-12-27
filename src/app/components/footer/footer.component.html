@@ -1,0 +1,16 @@
+<div class="flex justify-between items-center p-5" *transloco="let t">
+    <div class="flex gap-5 text-primary font-medium">
+        <div class="cursor-pointer">Link 1</div>
+        <div class="cursor-pointer">Link 2</div>
+        <div class="cursor-pointer">Link 3</div>
+    </div>
+    <div class="text-primary font-medium flex items-center">
+        <div>{{t('general.lang')}}:</div>
+        <div>
+            <select class="bg-slate-100 cursor-pointer" value="en" (change)="changeLanguage($event.target['value'])">
+                <option value="en">{{t('general.en')}}</option>
+                <option value="es">{{t('general.es')}}</option>
+            </select>
+        </div>
+    </div>
+</div>

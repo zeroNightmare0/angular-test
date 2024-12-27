@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+/* Tailwind libraries */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.fill-btn {
+    @apply flex rounded-full items-center font-medium border-2 bg-primary text-white px-3 py-1 hover:bg-primary-600;
+}
+.outline-btn {
+    @apply flex rounded-full items-center font-medium border-2 border-primary text-primary px-3 py-1 hover:bg-primary-100;
+}

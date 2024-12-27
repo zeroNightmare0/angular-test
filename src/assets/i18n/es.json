@@ -1,0 +1,42 @@
+{
+    "general": {
+        "login": "Iniciar sesión",
+        "cardLink": "Vincula tu tarjeta",
+        "lang": "Idioma",
+        "en": "Inglés",
+        "es": "Español",
+        "sortBy": "Ordenar por",
+        "name": "Nombre",
+        "description": "Descripción",
+        "asc": "Ascendente",
+        "desc": "Descendente",
+        "cashback": "Cashback",
+        "username": "Usuario",
+        "password": "Contraseña",
+        "userRquired": "El campo de usuario es requerido",
+        "passwordRequired": "La contraseña es requerida"
+    },
+    "principal": {
+        "moreCoupons": "Más cupones instantáneos",
+        "getCoupons": "Obtener cupones",
+        "instantCoupon": "Cupon instantáneo",
+        "tableTitle1": "Vincula tu tarjeta empresarial para",
+        "tableTitle2": "desbloquear cashback",
+        "tableTitle3": "y mas",
+        "titleSection2": "Explora los cupones instantáneos",
+        "titleSection3": "Cupones Instantáneos destacados"
+    },
+    "components": {
+        "noBrandsDetail": "Sin ofertas disponibles",
+        "noBrands": "No cupones disponibles",
+        "noMenuItems": "No hay categorias disponibles",
+        "detailTitle":"Desbloquea el poder completo de",
+        "tableTitle1":"No se requiere vincular tarjeta",
+        "tableTitle2":"Vincula tu tarjeta para obtener",
+        "tableRow1":"Cupones instantáneos",
+        "tableRow2":"Acceso completo a las ventajas de Visa Savings Edge",
+        "tableRow3":"Seguimiento de cashback",
+        "tableRow4":"Búsqueda de ubicaciones comerciales",
+        "tableRow5":"Ofertas de cashback"
+    }
+}

@@ -1,0 +1,119 @@
+<ng-container *transloco="let t">
+    <div class="md:flex md:justify-between items-center my-5">
+        <!-- Title -->
+        <div class="text-xl font-semibold text-center md:text-left">
+            {{t('principal.titleSection3')}} ({{items.length}})
+        </div>
+        <!-- Buttons -->
+        <div class="flex items-center justify-center md:justify-start">
+            <!-- List view -->
+            <div class="size-8 cursor-pointer rounded-sm flex items-center justify-center" (click)="listType = 'list'"
+                [ngClass]="{'bg-primary hover:bg-primary text-white': listType === 'list',
+                            'text-primary hover:bg-primary-100': listType === 'grid'}">
+                <mat-icon class="icon-[ion--list]"></mat-icon>
+            </div>
+            <!-- Grid view -->
+            <div class="size-8 cursor-pointer rounded-sm flex items-center justify-center mx-2"
+                [ngClass]="{'bg-primary hover:bg-primary text-white': listType === 'grid',
+                            'text-primary hover:bg-primary-100': listType === 'list'
+                }" (click)="listType = 'grid'">
+                <mat-icon class="icon-[material-symbols--window-outline]"></mat-icon>
+            </div>
+            <!-- Sort -->
+            <div [matMenuTriggerFor]="menu"
+                class="flex border-2 border-slate-300 rounded-sm p-1 items-center uppercase text-primary font-medium cursor-pointer">
+                <div class="border-r-2 border-slate-300 px-1">{{t('general.sortBy')}}</div>
+                <mat-icon class="icon-[gridicons--dropdown]"></mat-icon>
+            </div>
+            <!-- Sort menu -->
+            <mat-menu #menu="matMenu">
+                <!-- Sort by name -->
+                <button mat-menu-item (click)="sortBy('nombreMarca')"
+                        [matTooltip]="(sort.order === 'asc' && sort.field === 'nombreMarca') ? t('general.asc') : t('general.desc')">
+                    {{t('general.name')}}
+                    <mat-icon *ngIf="sort.field === 'nombreMarca' && sort.order"
+                                [ngClass]="{'icon-[mdi--sort-alphabetical-ascending]': sort.order === 'asc',
+                                            'icon-[mdi--sort-alphabetical-descending]': sort.order === 'desc'}"></mat-icon>
+                </button>
+                <!-- Sort by description -->
+                <button mat-menu-item (click)="sortBy('descripcion')"
+                        [matTooltip]="(sort.order === 'asc' && sort.field === 'descripcion') ? t('general.asc') : t('general.desc')">
+                    {{t('general.description')}}
+                    <mat-icon *ngIf="sort.field === 'descripcion' && sort.order"
+                                [ngClass]="{'icon-[mdi--sort-alphabetical-ascending]': sort.order === 'asc',
+                                            'icon-[mdi--sort-alphabetical-descending]': sort.order === 'desc'}"></mat-icon>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    @if (items?.length) {
+        <!-- Grid view -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 w-full" *ngIf="listType === 'grid'">
+            <div *ngFor="let brand of itemsToShow" class="bg-slate-100 rounded-lg p-5 shadow-md">
+                <!-- Image -->
+                <div class="h-24 flex items-center justify-center">
+                    <img src="{{brand.imagen}}" alt="{{brand.nombreMarca}}" class="h-full">
+                </div>
+                <!-- Instant coupon -->
+                <div class="bg-yellow-200 text-yellow-800 w-fit rounded-md px-1.5 py-0.5 font-medium flex items-center my-2">
+                    <mat-icon class="icon-[ri--coupon-2-line]"></mat-icon>
+                    <div>{{t('principal.instantCoupon')}}</div>
+                </div>
+                <!-- Name -->
+                <div class="font-medium text-slate-500">
+                    {{brand.nombreMarca}}
+                </div>
+                <!-- Descripcion -->
+                <div class="text-black text-lg font-medium">
+                    {{brand.descripcion}}
+                </div>
+                <!-- Get coupons -->
+                <div class="mt-10 flex text-slate-500 cursor-pointer hover:text-primary w-fit">
+                    <div>{{t('principal.getCoupons')}}</div>
+                    <mat-icon class="icon-[material-symbols--arrow-right-alt]"></mat-icon>
+                </div>
+            </div>
+        </div>
+        <!-- List view -->
+        <ng-container *ngIf="listType === 'list'">
+            <div *ngFor="let brand of itemsToShow" class="w-full border-b-2 flex items-center py-1">
+                <!-- Image -->
+                <div class="size-24 flex items-center justify-center">
+                    <img src="{{brand.imagen}}" alt="{{brand.nombreMarca}}" class="h-full">
+                </div>
+                <!-- Data -->
+                <div class="w-full px-2">
+                    <!-- Name -->
+                    <div class="font-medium text-slate-500">{{brand.nombreMarca}}</div>
+                    <!-- Description -->
+                    <div class="text-black text-lg font-medium">{{brand.descripcion}}</div>
+                    <!-- Coupons -->
+                    <div class="sm:flex justify-between items-center gap-y-2 sm:gap-y-0">
+                        <!-- Instant coupon -->
+                        <div class="bg-yellow-200 text-yellow-800 w-fit rounded-md px-1.5 py-0.5 font-medium flex items-center">
+                            <mat-icon class="icon-[ri--coupon-2-line]"></mat-icon>
+                            <div>{{t('principal.instantCoupon')}}</div>
+                        </div>
+                        <!-- Get coupons -->
+                        <div class="flex text-slate-500 cursor-pointer hover:text-primary w-fit">
+                            <div>{{t('principal.getCoupons')}}</div>
+                            <mat-icon class="icon-[material-symbols--arrow-right-alt]"></mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <!-- Show more -->
+        <div class="w-full flex justify-center">
+            <div class="my-5 flex items-center text-slate-500 cursor-pointer hover:text-primary w-fit uppercase hover:bg-slate-100 px-2 py-1 rounded-full" (click)="showMore()">
+                <div>{{t('principal.moreCoupons')}}</div>
+                <mat-icon class="icon-[iconamoon--arrow-right-2-bold]"></mat-icon>
+            </div>
+        </div>
+    }
+    @else {
+        <div class="text-center text-slate-500 text-4xl font-medium flex items-center justify-center w-full">
+            <div>{{t('components.noBrands')}}</div>
+        </div>
+    }
+</ng-container>

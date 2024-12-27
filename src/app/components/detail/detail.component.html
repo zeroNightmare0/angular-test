@@ -1,0 +1,51 @@
+<div *transloco="let t" class="bg-gradient-to-b from-primary via-primary to-white p-20">
+    <!-- Title -->
+    <div class="text-6xl font-medium text-center text-white mb-20">
+        {{t('components.detailTitle')}}
+    </div>
+    <!-- Content -->
+    @if (items?.length) {
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center">
+            <div *ngFor="let item of itemsToShow" class="rounded-xl shadow-md w-full bg-white">
+                <!-- Image -->
+                <div class="relative">
+                    <!-- Image -->
+                    <div class="h-40 flex items-center justify-center">
+                        <img src="assets/images/brand-image.jpg" alt="{{item.nombreMarca}}" class="h-full w-full rounded-t-xl">
+                    </div>
+                    <!-- Icon -->
+                    <div class="absolute top-3 right-3 size-14">
+                        <img src="{{item.imagen}}" alt="{{item.nombreMarca}}" class="size-full rounded-full shadow-lg">
+                    </div>
+                    <!-- Cashback -->
+                    <div class="bg-blue-200 text-blue-800 w-fit rounded-md px-1.5 py-0.5 font-medium flex items-center absolute -bottom-4 left-5">
+                        <mat-icon class="icon-[ph--money]"></mat-icon>
+                        <div>{{t('general.cashback')}}</div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 h-fit rounded-xl">
+                    <!-- Name -->
+                    <div class="font-medium text-slate-500">
+                        {{item.nombreMarca}}
+                    </div>
+                    <!-- Descripcion -->
+                    <div class="text-black text-lg font-medium">
+                        {{item.descripcion}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @else {
+        <div class="text-center text-white text-4xl font-medium flex items-center justify-center w-full">
+            <div>{{t('components.noBrandsDetail')}}</div>
+        </div>
+    }
+    <!-- Button -->
+    <div class="w-full flex justify-center mt-10">
+        <button class="fill-btn">
+            {{t('general.cardLink')}}
+            <mat-icon class="icon-[iconamoon--arrow-right-2-bold]"></mat-icon>
+        </button>
+    </div>
+</div>

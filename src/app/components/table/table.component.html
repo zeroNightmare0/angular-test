@@ -1,0 +1,38 @@
+<ng-container *transloco="let t">
+    <!-- Header -->
+    <div class="grid grid-cols-3">
+        <div></div>
+        <div class="font-bold text-center">
+            {{t('components.tableTitle1')}}
+        </div>
+        <div class="font-bold text-center">
+            {{t('components.tableTitle2')}}
+        </div>
+    </div>
+    <!-- Rows -->
+    <div class="grid grid-cols-3 gap-y-5 items-center">
+        <ng-container *ngFor="let data of data">
+            <!-- Title -->
+            <div class="font-bold flex items-center border-b-2 h-10">{{(translate) ? t('components.'+data.rowTitle) : data.rowTitle}}</div>
+            <!-- Benefits without card -->
+            <div class="flex items-center justify-center border-b-2 h-10">
+                <div *ngIf="data.withoutCardRequiered" class="flex items-center justify-center rounded-full border-2 border-primary text-primary w-fit">
+                    <mat-icon class="icon-[material-symbols--check]"></mat-icon>
+                </div>
+            </div>
+            <!-- Benefits with card -->
+            <div class="flex items-center justify-center border-b-2 h-10">
+                <div *ngIf="data.cardRequiered" class="flex items-center justify-center rounded-full border-2 border-primary text-primary w-fit">
+                    <mat-icon class="icon-[material-symbols--check]"></mat-icon>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <!-- Link your card -->
+    <div class="flex justify-center mt-10 mb-20">
+        <button class="fill-btn">
+            {{t('general.cardLink')}}
+            <mat-icon class="icon-[iconamoon--arrow-right-2-bold]"></mat-icon>
+        </button>
+    </div>
+</ng-container>

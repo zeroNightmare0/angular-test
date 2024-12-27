@@ -1,0 +1,42 @@
+{
+    "general": {
+        "login": "Login",
+        "cardLink": "Link your card",
+        "lang": "Language",
+        "en": "English",
+        "es": "Spanish",
+        "sortBy": "Sort by",
+        "name": "Name",
+        "description": "Description",
+        "asc": "Ascending",
+        "desc": "Descending",
+        "cashback": "Cashback",
+        "username": "Username",
+        "password": "Password",
+        "userRquired": "The username field is required",
+        "passwordRequired": "The password is required"
+    },
+    "principal": {
+        "moreCoupons": "More Instant Coupons",
+        "getCoupons": "Get Coupons",
+        "instantCoupon": "Instant Coupon",
+        "tableTitle1": "Link your business card to",
+        "tableTitle2": "unlock cashback",
+        "tableTitle3": "offers",
+        "titleSection2": "Explore Instant Coupons",
+        "titleSection3": "Featured Instant Coupons"
+    },
+    "components": {
+        "noBrandsDetail": "No offers available",
+        "noBrands": "No coupons available",
+        "noMenuItems": "No categories available",
+        "detailTitle":"Unlock the full power of",
+        "tableTitle1":"No card linking required",
+        "tableTitle2":"Link your card to get",
+        "tableRow1":"Instant coupons",
+        "tableRow2":"Full access to Visa Savings Edge benefits",
+        "tableRow3":"Cashback tracking",
+        "tableRow4":"Merchant locations search",
+        "tableRow5":"Cashback offers"
+    }
+}

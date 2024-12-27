@@ -1,0 +1,19 @@
+<ng-container *transloco="let t">
+    @if (items?.length) {
+        <div class="flex flex-wrap gap-5 justify-center">
+            @for (item of items; track $index) {
+                <div class=" px-3 py-1 rounded-full cursor-pointer font-medium" (click)="changeItem(item)"
+                    [ngClass]="{'bg-black text-white hover:bg-black': item.idMenu === itemSelected.idMenu,
+                                'bg-slate-200 text-black hover:bg-slate-300': item.idMenu !== itemSelected.idMenu}">
+                    {{item.descripcion}}
+                </div>
+            }
+        </div>
+    }
+    @else {
+        <div class="text-center text-slate-500 text-2xl font-medium flex items-center justify-center w-full">
+            <div>{{t('components.noMenuItems')}}</div>
+        </div>
+    }
+</ng-container>
+

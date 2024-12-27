@@ -1,0 +1,47 @@
+<ng-container *transloco="let t;">
+    <div class="h-screen flex items-center justify-center bg-fixed bg-no-repeat bg-center bg-cover bg-[url('assets/images/login-bg.jpg')]">
+        <div class="flex flex-col flex-auto items-center justify-center min-w-0">
+            <div
+                class="w-full sm:w-auto py-8 px-4 p-40 bg-primary-900 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 border border-gray-100">
+                <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
+                    <!-- Title message -->
+                    <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight text-white text-center shadow-sm">
+                        {{t('general.login')}}
+                    </div>
+                    <!-- Sign in form -->
+                    <form class="mt-8" [formGroup]="signInForm">
+                        <!-- User field -->
+                        <mat-form-field class="w-full">
+                            <mat-label class="text-primary">{{t('general.username')}}</mat-label>
+                            <input id="username" id="email" matInput [formControlName]="'username'">
+                            <mat-error *ngIf="signInForm.get('username').hasError('required')">
+                                {{t('general.userRquired')}}
+                            </mat-error>
+                            <mat-icon matPrefix class="icon-[hugeicons--user]"></mat-icon>
+                        </mat-form-field>
+                        <!-- Password field -->
+                        <mat-form-field class="w-full">
+                            <mat-label class="text-primary">{{t('general.password')}}</mat-label>
+                            <input id="password" matInput type="password" [formControlName]="'password'" #passwordField>
+                            <button mat-icon-button type="button" matSuffix (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'">
+                                <mat-icon *ngIf="passwordField.type === 'password'" class="icon-[mdi--eye-outline]"></mat-icon>
+                                <mat-icon *ngIf="passwordField.type === 'text'" class="icon-[mdi--eye-off-outline]"></mat-icon>
+                            </button>
+                            <mat-error>
+                                {{t('general.passwordRequired')}}
+                            </mat-error>
+                            <mat-icon matPrefix class="icon-[formkit--password]"></mat-icon>
+                        </mat-form-field>
+                        <!-- Submit button -->
+                        <button class="w-full mt-3" mat-flat-button color="primary" [disabled]="signInForm.disabled" (click)="signIn()">
+                            <span *ngIf="!signInForm.disabled"> {{t('general.login')}} </span>
+                            <mat-icon class="icon-[material-symbols--login]"></mat-icon>
+                            <mat-progress-spinner *ngIf="signInForm.disabled" [diameter]="24" mode="indeterminate"></mat-progress-spinner>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

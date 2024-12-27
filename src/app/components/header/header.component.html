@@ -1,0 +1,16 @@
+<div class="w-full h-20 flex items-center justify-end p-5" *transloco="let t">
+    <!-- Login -->
+    <div class="mr-5">
+        <button class="outline-btn" [routerLink]="['/login']">
+            {{t('general.login')}}
+            <mat-icon class="icon-[iconamoon--arrow-right-2-bold]"></mat-icon>
+        </button>
+    </div>
+    <!-- Card link -->
+    <div>
+        <button class="fill-btn">
+            {{t('general.cardLink')}}
+            <mat-icon class="icon-[iconamoon--arrow-right-2-bold]"></mat-icon>
+        </button>
+    </div>
+</div>
